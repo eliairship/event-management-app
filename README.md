@@ -56,6 +56,7 @@ erDiagram
       int id PK
       string email UK
       string name
+      string hashedPassword
     }
     EVENT ||--o{ TICKET : includes
     EVENT {
