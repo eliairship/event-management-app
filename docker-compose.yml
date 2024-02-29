@@ -19,5 +19,12 @@ services:
       - ./database:/flyway/sql  
     depends_on:  
       - db  
+  api:
+    image: event-management-express-app
+    build: .
+    ports:
+      - "3001:3001"
+    environment:
+      DATABASE_URL: "postgres://postgres:password@db:5432/event-management_db?schema=public"
 volumes:  
   db:
