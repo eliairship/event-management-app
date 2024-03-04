@@ -22,6 +22,6 @@ export function deleteTicketById(req: Request, res: Response) {
 
 export function putTicketById(req: Request, res: Response) {
   return res
-    .json({ message: 'Put Event By ID', params: req.params })
+    .json({ message: 'Put Ticket By ID', params: req.params })
     .status(200);
 }

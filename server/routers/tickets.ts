@@ -1,12 +1,12 @@
 import { Router } from 'express';
-import * as eventsController from 'server/controllers/tickets';
+import * as ticketsController from '../controllers/tickets';
 
 const router = Router();
 
-router.route('/').get(eventsController.getAllTickets);
-router.route('/').post(eventsController.postTicket);
-router.route('/:ticketId').get(eventsController.getTicketById);
-router.route('/:ticketId').delete(eventsController.deleteTicketById);
-router.route('/:ticketId').put(eventsController.putTicketById);
+router.route('/').get(ticketsController.getAllTickets);
+router.route('/').post(ticketsController.postTicket);
+router.route('/:ticketId').get(ticketsController.getTicketById);
+router.route('/:ticketId').delete(ticketsController.deleteTicketById);
+router.route('/:ticketId').put(ticketsController.putTicketById);
 
 export default router;
