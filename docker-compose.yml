@@ -20,10 +20,14 @@ services:
     depends_on:  
       - db  
   api:
-    image: event-management-express-app
-    build: .
+    profiles: ["dev"]
+    build:
+      context: ./server
+      dockerfile: Dockerfile.local
     ports:
       - "3001:3001"
+    volumes:
+      - ./server:/app
     environment:
       DATABASE_URL: "postgres://postgres:password@db:5432/event-management_db?schema=public"
 volumes:  
