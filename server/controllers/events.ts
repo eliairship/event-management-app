@@ -1,19 +1,7 @@
 import { Request, Response } from 'express';
-import { PrismaClient } from '@prisma/client'
-const prisma = new PrismaClient()
 
 export async function getAllEvents(req: Request, res: Response) {
-  const events = await prisma.events.findMany({
-    where: {
-      id: 1,
-    },
-    select: {
-      id: true,
-      name: true,
-    }
-  });
-
-  return res.json(events).status(200);
+  return res.json({ message: 'All Events' }).status(200);
 }
 
 export function getAllTicketsForEvent(req: Request, res: Response) {
