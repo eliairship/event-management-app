@@ -1,6 +1,3 @@
-import { fileURLToPath } from 'url';
-import { dirname } from 'path';
-
 import express from 'express';
 import cors from 'cors';
 import { authRouter, eventsRouter, ticketsRouter } from './routers';
@@ -21,7 +18,6 @@ const options = {
 };
 
 const openapiSpecification = swaggerJsdoc(options);
-console.log(openapiSpecification);
 
 const app = express();
 
