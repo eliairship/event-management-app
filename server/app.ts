@@ -22,13 +22,17 @@ const openapiSpecification = swaggerJsdoc(options);
 const app = express();
 
 app.use(express.json());
-app.use(cors());
+app.use(
+  cors({
+    origin: '*',
+  })
+);
 
 /**
  * Public Routes
  */
 app.use('/auth', authRouter);
-app.use('/api-docs', swaggerUI.serve, swaggerUI.setup(openapiSpecification));
+app.use('/docs', swaggerUI.serve, swaggerUI.setup(openapiSpecification));
 
 /**
  * Protected Routes
