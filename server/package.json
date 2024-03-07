@@ -8,7 +8,8 @@
     "build": "tsc -p .",
     "start": "npm run build && node build/index.js",
     "prisma:generate": "prisma generate",
-    "prisma:pull": "prisma db pull"
+    "prisma:pull": "prisma db pull",
+    "postinstall": "npm run prisma:pull && npm run prisma:generate"
   },
   "keywords": [],
   "author": "",
@@ -17,6 +18,7 @@
     "@prisma/client": "^5.10.2",
     "cors": "^2.8.5",
     "express": "^4.18.2",
+    "express-validator": "^7.0.1",
     "swagger-jsdoc": "^6.2.8",
     "swagger-ui-express": "^5.0.0",
     "typescript": "^5.3.3"

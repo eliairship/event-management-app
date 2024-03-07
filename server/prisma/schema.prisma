@@ -19,6 +19,7 @@ model events {
   status       event_status?
   created_at   DateTime?     @db.Timestamp(6)
   completed_at DateTime?     @db.Timestamp(6)
+  deleted_at   DateTime?     @db.Timestamp(6)
   users        users?        @relation(fields: [user_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
   tickets      tickets[]
 }
@@ -47,6 +48,7 @@ model tickets {
   status         ticket_status?
   created_at     DateTime       @db.Timestamp(6)
   updated_at     DateTime?      @db.Timestamp(6)
+  deleted_at     DateTime?      @db.Timestamp(6)
   events         events?        @relation(fields: [event_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
   users          users?         @relation(fields: [user_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
 }
