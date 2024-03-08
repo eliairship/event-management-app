@@ -1,5 +1,7 @@
 import { Router } from 'express';
 import * as authController from '../controllers/auth';
+import { body } from 'express-validator';
+import { validate } from '../utils/validation';
 
 /**
  * @swagger
@@ -17,7 +19,6 @@ import * as authController from '../controllers/auth';
  *         type: string
  */
 
-
 /**
  * @swagger
  * tags:
@@ -33,7 +34,7 @@ const router = Router();
  *     summary: Sign in a user.
  *     tags: [Auth]
  *     parameters:
- *       - name: email
+ *       - name: identifier
  *         description: User's email.
  *         in: formData
  *         required: true
@@ -45,18 +46,31 @@ const router = Router();
  *         type: string
  *     responses:
  *       200:
- *         description: Returns a mysterious json message.
+ *         description: Returns an access token.
  */
-router.route('/signin').post(authController.postSignIn);
+router
+  .route('/signin')
+  .post(
+    [
+      body('identifier')
+        .isString()
+        .trim()
+        .isLength({ min: 3 })
+        .withMessage('Please enter a valid identifier.'),
+      body('password').trim().isLength({ min: 8 }).isString(),
+    ],
+    validate,
+    authController.postSignIn
+  );
 
 /**
  * @swagger
  * /auth/signup:
  *   post:
- *     summary: Register a new user 
+ *     summary: Register a new user
  *     tags: [Auth]
  *     parameters:
- *       - name: email
+ *       - name: identifier
  *         description: User's email.
  *         in: formData
  *         required: true
@@ -68,8 +82,21 @@ router.route('/signin').post(authController.postSignIn);
  *         type: string
  *     responses:
  *       200:
- *         description: Returns a mysterious json message.
+ *         description: Returns an access token.
  */
-router.route('/signup').post(authController.postSignUp);
+router
+  .route('/signup')
+  .post(
+    [
+      body('identifier')
+        .isString()
+        .trim()
+        .isLength({ min: 3 })
+        .withMessage('Please enter a valid identifier.'),
+      body('password').trim().isLength({ min: 8 }).isString(),
+    ],
+    validate,
+    authController.postSignUp
+  );
 
 export default router;
