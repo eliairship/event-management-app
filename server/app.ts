@@ -1,7 +1,12 @@
 import express from 'express';
 import cors from 'cors';
-import { authRouter, eventsRouter, ticketsRouter } from './routers';
-import { verifyToken } from './middleware/auth';
+import {
+  authRouter,
+  eventsRouter,
+  ticketsRouter,
+  usersRouter,
+} from './routers';
+import { verifyTokenMiddleware } from './middleware/auth';
 import swaggerJsdoc from 'swagger-jsdoc';
 const swaggerUI = require('swagger-ui-express');
 
@@ -38,6 +43,7 @@ app.use('/docs', swaggerUI.serve, swaggerUI.setup(openapiSpecification));
  * Protected Routes
  */
 app.use(verifyToken);
+app.use('/users', usersRouter);
 app.use('/events', eventsRouter);
 app.use('/tickets', ticketsRouter);
 
