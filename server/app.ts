@@ -42,7 +42,7 @@ app.use('/docs', swaggerUI.serve, swaggerUI.setup(openapiSpecification));
 /**
  * Protected Routes
  */
-app.use(verifyToken);
+app.use(verifyTokenMiddleware);
 app.use('/users', usersRouter);
 app.use('/events', eventsRouter);
 app.use('/tickets', ticketsRouter);
