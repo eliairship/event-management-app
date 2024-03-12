@@ -10,7 +10,7 @@ import { verifyTokenMiddleware } from './middleware/auth';
 import swaggerJsdoc from 'swagger-jsdoc';
 const swaggerUI = require('swagger-ui-express');
 
-const options = {
+const options: swaggerJsdoc.Options = {
   failOnErrors: true, // Whether or not to throw when parsing errors. Defaults to false.
   definition: {
     openapi: '3.0.0',
@@ -18,6 +18,23 @@ const options = {
       title: 'Event Management API',
       version: '1.0.0',
     },
+    components: {
+      securitySchemes: {
+        bearerAuth: {
+          type: 'http',
+          in: 'header',
+          name: 'Authorization',
+          description: 'Bearer token to access api endpoints',
+          scheme: 'bearer',
+          bearerFormat: 'JWT',
+        },
+      },
+    },
+    security: [
+      {
+        bearerAuth: [],
+      },
+    ],
   },
   apis: ['./routers/**.ts', `${__dirname}/routers/*.ts`],
 };
@@ -38,6 +55,9 @@ app.use(
  */
 app.use('/auth', authRouter);
 app.use('/docs', swaggerUI.serve, swaggerUI.setup(openapiSpecification));
+app.use('/swagger.json', (req, res) =>
+  res.json(openapiSpecification).status(200)
+);
 
 /**
  * Protected Routes
