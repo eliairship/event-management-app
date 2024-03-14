@@ -54,12 +54,13 @@ model tickets {
 }
 
 model users {
-  id             Int       @id @default(autoincrement())
-  email          String    @unique @db.VarChar(255)
-  name           String?   @db.VarChar(255)
-  hashedpassword String?   @db.VarChar(255)
-  events         events[]
-  tickets        tickets[]
+  id         Int       @id @default(autoincrement())
+  identifier String    @unique @db.VarChar(255)
+  name       String?   @db.VarChar(255)
+  password   String    @db.VarChar(255)
+  deleted_at DateTime? @db.Timestamp(6)
+  events     events[]
+  tickets    tickets[]
 }
 
 enum event_status {

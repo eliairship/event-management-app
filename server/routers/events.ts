@@ -182,30 +182,27 @@ router.route('/:eventId').delete(eventsController.deleteEventById);
  *       200:
  *         description: Returns the updated event.
  */
-router.route('/:eventId').put(
-  [
-    body('name')
-      .isString()
-      .trim()
-      .isLength({ min: 3 })
-      .withMessage('The name of the event must have minimum length of 3'),
-    body('date')
-      .isISO8601({
-        // format: ""
-      })
-      .trim()
-      .withMessage('Please enter a valid date.'),
-    body('description')
-      .isString()
-      .trim()
-      .withMessage('Please enter a description'),
-    body('address').isString().trim().withMessage('Please enter an address'),
-    body('city').isString().trim().withMessage('Please enter a city'),
-    body('state').isString().trim().withMessage('Please enter a state'),
-    body('status').isString().trim().withMessage('Please enter a status'),
-  ],
-  validate,
-  eventsController.putEventById
-);
+router
+  .route('/:eventId')
+  .put(
+    [
+      body('name')
+        .isString()
+        .trim()
+        .isLength({ min: 3 })
+        .withMessage('The name of the event must have minimum length of 3'),
+      body('date').isISO8601().trim().withMessage('Please enter a valid date.'),
+      body('description')
+        .isString()
+        .trim()
+        .withMessage('Please enter a description'),
+      body('address').isString().trim().withMessage('Please enter an address'),
+      body('city').isString().trim().withMessage('Please enter a city'),
+      body('state').isString().trim().withMessage('Please enter a state'),
+      body('status').isString().trim().withMessage('Please enter a status'),
+    ],
+    validate,
+    eventsController.putEventById
+  );
 
 export default router;
