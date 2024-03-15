@@ -20,7 +20,7 @@ const router = Router();
  *       200:
  *         description: All events.
  */
-router.route('/').get(eventsController.getAllEvents);
+router.route('/').get(eventsController.getAllEventsForUser);
 
 /**
  * @swagger
