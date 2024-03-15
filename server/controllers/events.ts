@@ -1,9 +1,16 @@
 import { Request, Response } from 'express';
 import { prisma } from '../utils/prisma';
 import { event_status } from '@prisma/client';
+import { EventsService } from '../services';
 
-export async function getAllEvents(req: Request, res: Response) {
-  const events = await prisma.events.findMany();
+export async function getAllEventsForUser(req: Request, res: Response) {
+  const { user_id } = res.locals;
+
+  const events = await EventsService.getAllForUser(user_id);
+
+  if (!events) {
+    res.sendStatus(404);
+  }
   return res.json(events).status(200);
 }
 
