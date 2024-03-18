@@ -9,6 +9,11 @@ on:
 defaults:
   run:
     working-directory: ./server
+  
+permissions:
+  contents: read
+  actions: read
+  checks: write
 
 jobs:
   verify:
