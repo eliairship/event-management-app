@@ -7,14 +7,9 @@ on:
     paths:
       - "database/**"
 
-env:
-  DATABASE_URL: postgresql://postgres:password@localhost:5432/event-management_db?schema=public
-
 jobs:
   verify:
     runs-on: ubuntu-latest
-    permissions:
-      contents: write
     steps:
       - uses: actions/checkout@v3
       - name: execute flyway in docker 🐳
@@ -23,17 +18,3 @@ jobs:
         uses: jakejarvis/wait-action@master
         with:
           time: '30s'
-      - name: Server Install
-        run: npm i --prefix ./server
-      - name: Prisma Pull
-        run: npm --prefix ./server run prisma:pull 
-      - name: Prisma Generate
-        run: npm --prefix ./server run prisma:generate 
-      - name: 🛠 Check for modified snapshots
-        id: snapshot-check
-        run: echo ::set-output name=modified::$(if git status | grep "nothing to commit"; then echo "false"; else echo "true"; fi)
-      - name: 🛠 Commit updated snapshots
-        if: steps.snapshot-check.outputs.modified == 'true'
-        uses: stefanzweifel/git-auto-commit-action@v5
-        with:
-          commit_message: Commit for snapshot update
