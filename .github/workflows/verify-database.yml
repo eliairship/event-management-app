@@ -9,10 +9,12 @@ on:
 
 env:
   DATABASE_URL: postgresql://postgres:password@localhost:5432/event-management_db?schema=public
-  
+
 jobs:
   verify:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
       - uses: actions/checkout@v3
       - name: execute flyway in docker 🐳
