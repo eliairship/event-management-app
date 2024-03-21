@@ -21,6 +21,8 @@ jobs:
       contents: write
     steps:
       - uses: actions/checkout@v3
+      - name: execute flyway in docker 🐳
+        run: docker compose up -d
       - name: Server Install
         run: npm i
       - name: Prisma Pull
