@@ -1,4 +1,4 @@
-import express from 'express';
+import express, { NextFunction, Request, Response } from 'express';
 import cors from 'cors';
 import {
   authRouter,
@@ -6,6 +6,7 @@ import {
   ticketsRouter,
   usersRouter,
 } from './routers';
+import 'express-async-errors';
 import { verifyTokenMiddleware } from './middleware/auth';
 import swaggerJsdoc from 'swagger-jsdoc';
 const swaggerUI = require('swagger-ui-express');
@@ -67,4 +68,13 @@ app.use('/users', usersRouter);
 app.use('/events', eventsRouter);
 app.use('/tickets', ticketsRouter);
 
+// Error Handling
+app.use((err: any, req: Request, res: Response, next: NextFunction) => {
+  if (err) {
+    return res.status(err.status || 500).json({
+      message: err.message,
+      stack: err.stack,
+    });
+  }
+});
 export { app };
