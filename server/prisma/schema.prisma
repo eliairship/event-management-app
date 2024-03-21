@@ -58,6 +58,7 @@ model users {
   identifier String    @unique @db.VarChar(255)
   name       String?   @db.VarChar(255)
   title      String?   @db.VarChar(255)
+  address    String?   @db.VarChar(255)
   password   String    @db.VarChar(255)
   deleted_at DateTime? @db.Timestamp(6)
   events     events[]
