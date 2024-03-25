@@ -35,7 +35,7 @@ jobs:
       id: build-image
       run: |
         docker build --build-arg API_DB_URL="${{ secrets.API_DB_URL }}" -t event-api:latest .
-        aws lightsail push-container-image --region us-east-2 --service-name event-service-1 --label event-api --image event-api:latest
+        aws lightsail push-container-image --region us-east-1 --service-name event-service-1 --label event-api --image event-api:latest
     - name: Deploy Service
       run: |
           aws lightsail get-container-images --service-name event-service-1 | jq --raw-output ".containerImages[0].image" > image.txt
