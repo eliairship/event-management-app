@@ -1,5 +1,5 @@
 FROM node:18-alpine
-RUN apt-get install -y openssl
+# RUN apt-get install -y openssl
 
 RUN mkdir -p /usr/src/app
 
@@ -14,7 +14,7 @@ ENV DATABASE_URL=$API_DB_URL
 
 EXPOSE 3001
 
-ENTRYPOINT ["sh", "-c"]
+# ENTRYPOINT ["sh", "-c"]
 
-CMD ["npm start"]
-# CMD ["npm", "run", "start"]
+# CMD ["npm start"]
+CMD ["npm", "run", "start"]
