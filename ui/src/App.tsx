@@ -3,6 +3,7 @@ import reactLogo from './assets/react.svg';
 import viteLogo from '/vite.svg';
 import './App.css';
 import ReducerExample from './components/ReducerExample';
+import { Navigate, Route, Routes } from 'react-router-dom';
 
 function App() {
   const [count, setCount] = useState(0);
@@ -17,6 +18,11 @@ function App() {
           <img src={reactLogo} className="logo react" alt="React logo" />
         </a>
       </div>
+      <Routes>
+        <Route path="/nottest" element={<>Not Test Route</>} />
+        <Route path="/test" element={<>Test Route</>} />
+        <Route path="*" element={<Navigate to="/test" />} />
+      </Routes>
       <h1>Vite + React</h1>
       <div className="card">
         <button onClick={() => setCount((count) => count + 1)}>
