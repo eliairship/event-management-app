@@ -4,6 +4,7 @@ import viteLogo from '/vite.svg';
 import './App.css';
 import ReducerExample from './components/ReducerExample';
 import { Navigate, Route, Routes, useNavigate } from 'react-router-dom';
+import NestedDetail from './containers/NestedDetail';
 
 function App() {
   const [count, setCount] = useState(0);
@@ -25,7 +26,7 @@ function App() {
       <Routes>
         <Route path="/nested">
           <Route index element={<>Nested</>} />
-          <Route path={':testId'} element={<>Nested Detail</>} />
+          <Route path={':testId'} element={<NestedDetail />} />
         </Route>
         <Route path="/nottest" element={<>Not Test Route</>} />
         <Route path="/test" element={<>Test Route</>} />
