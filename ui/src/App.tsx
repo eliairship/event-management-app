@@ -19,6 +19,10 @@ function App() {
         </a>
       </div>
       <Routes>
+        <Route path="/nested">
+          <Route index element={<>Nested</>} />
+          <Route path={':testId'} element={<>Nested Detail</>} />
+        </Route>
         <Route path="/nottest" element={<>Not Test Route</>} />
         <Route path="/test" element={<>Test Route</>} />
         <Route path="*" element={<Navigate to="/test" />} />
