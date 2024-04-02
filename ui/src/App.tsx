@@ -3,10 +3,12 @@ import reactLogo from './assets/react.svg';
 import viteLogo from '/vite.svg';
 import './App.css';
 import ReducerExample from './components/ReducerExample';
-import { Navigate, Route, Routes } from 'react-router-dom';
+import { Navigate, Route, Routes, useNavigate } from 'react-router-dom';
 
 function App() {
   const [count, setCount] = useState(0);
+
+  const navigate = useNavigate();
 
   return (
     <>
@@ -18,6 +20,8 @@ function App() {
           <img src={reactLogo} className="logo react" alt="React logo" />
         </a>
       </div>
+      <button onClick={() => navigate('/nested')}>nested</button>
+      <button onClick={() => navigate('/test')}>Test</button>
       <Routes>
         <Route path="/nested">
           <Route index element={<>Nested</>} />
