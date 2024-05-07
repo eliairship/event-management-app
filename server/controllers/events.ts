@@ -5,13 +5,15 @@ import { EventsService } from '../services';
 
 export async function getAllEventsForUser(req: Request, res: Response) {
   const { user_id } = res.locals;
+  // Simulate loading
+  setTimeout(async () => {
+    const events = await EventsService.getAllForUser(user_id);
 
-  const events = await EventsService.getAllForUser(user_id);
-
-  if (!events) {
-    res.sendStatus(404);
-  }
-  return res.json(events).status(200);
+    if (!events) {
+      res.sendStatus(404);
+    }
+    return res.json(events).status(200);
+  }, 5000);
 }
 
 export async function getAllTicketsForEvent(req: Request, res: Response) {

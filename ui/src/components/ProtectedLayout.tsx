@@ -17,8 +17,8 @@ export const ProtectedLayout = () => {
   }
 
   return (
-    <>
+    <div className="container mx-auto py-4">
       <Outlet />
-    </>
+    </div>
   );
 };
