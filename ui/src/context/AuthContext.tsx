@@ -23,9 +23,8 @@ interface ContextType {
 }
 export function AuthContextProvider({ children }: ContextType) {
   const [user, setUser] = useState<User | null>(null);
-  const isLoggedIn = Boolean(user);
-
   const token = storage.getToken();
+  const isLoggedIn = Boolean(token);
 
   const setUserToken = (accessToken: string) => {
     const decoded = jwtDecode(accessToken);

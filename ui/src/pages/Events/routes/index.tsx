@@ -4,7 +4,7 @@ import { EventsPage } from './Events';
 export const EventsRoutes = () => {
   return (
     <Routes>
-      <Route path="" element={<EventsPage />} />
+      <Route path="/" element={<EventsPage />} />
     </Routes>
   );
 };
