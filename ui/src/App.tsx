@@ -1,16 +1,13 @@
-import './App.css';
-import { useNavigate } from 'react-router-dom';
-import { Routes } from './containers/Routes';
+import { AppRoutes } from './routes';
+import { Navbar } from './components/Navbar';
+import { AuthContextProvider } from './context/AuthContext';
 
 function App() {
-  const navigate = useNavigate();
-
   return (
-    <>
-      <button onClick={() => navigate('/nested')}>nested</button>
-      <button onClick={() => navigate('/test')}>Test</button>
-      <Routes />
-    </>
+    <AuthContextProvider>
+      <Navbar />
+      <AppRoutes />
+    </AuthContextProvider>
   );
 }
 
