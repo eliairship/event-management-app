@@ -10,6 +10,7 @@ module.exports = async () => {
     composeFilePath,
     composeFile
   )
+    .withProfiles(['be'])
     .withWaitStrategy('flyway-1', Wait.forLogMessage(/^Successfully applied/))
     .up();
 
