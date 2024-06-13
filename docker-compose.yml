@@ -23,7 +23,7 @@ services:
     profiles: ["be"]
     build:
       context: ./server
-      dockerfile: ./server/Dockerfile.local
+      dockerfile: Dockerfile.local
     ports:
       - "3001:3001"
     volumes:

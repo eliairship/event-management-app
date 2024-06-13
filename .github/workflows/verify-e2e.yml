@@ -4,6 +4,7 @@ on:
     branches: [ main, master ]
   pull_request:
     branches: [ main, master ]
+
 defaults:
   run:
     working-directory: tests
@@ -17,8 +18,7 @@ jobs:
     - uses: actions/setup-node@v4
       with:
         node-version: lts/*
-    - name: change directory
-      #run: cd ./ui && pwd
+    - name: Check directory
       run: pwd
     - name: Install dependencies
       run: npm i
