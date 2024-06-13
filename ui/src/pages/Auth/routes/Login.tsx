@@ -57,6 +57,7 @@ export const LoginPage = () => {
               <Input
                 id="email"
                 type="email"
+                data-test-id="email-field"
                 placeholder="m@example.com"
                 required
                 onChange={(e) => setEmail(e.target.value)}
