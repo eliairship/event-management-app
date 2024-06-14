@@ -1,6 +1,5 @@
 import {
   CardContent,
-  CardDescription,
   CardFooter,
   CardHeader,
   CardTitle,
@@ -19,9 +18,7 @@ export const EventsLoadingGrid = () => {
             <CardTitle>
               <Skeleton className="w-3/4 h-[20px] rounded-full" />
             </CardTitle>
-            <CardDescription>
-              <Skeleton className="w-1/2 h-[20px] rounded-full" />
-            </CardDescription>
+            <Skeleton className="w-1/2 h-[20px] rounded-full" />
           </CardHeader>
           <CardContent>
             <Skeleton className="w-1/4 h-[20px] rounded-full" />

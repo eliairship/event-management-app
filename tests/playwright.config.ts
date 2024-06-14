@@ -30,8 +30,12 @@ export default defineConfig({
     trace: 'on-first-retry',
   },
 
-  globalSetup: require.resolve('./e2e/global.setup.ts'),
-  globalTeardown: require.resolve('./e2e/global.teardown.ts'),
+  globalSetup: process.env.CI
+    ? require.resolve('./e2e/global.setup.ts')
+    : undefined,
+  globalTeardown: process.env.CI
+    ? require.resolve('./e2e/global.teardown.ts')
+    : undefined,
 
   /* Configure projects for major browsers */
   projects: [

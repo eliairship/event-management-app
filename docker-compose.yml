@@ -19,7 +19,7 @@ services:
     depends_on:  
       - db  
   api:
-    profiles: ["be"]
+    profiles: ["be", "e2e"]
     build:
       context: ./server
       dockerfile: Dockerfile.local
@@ -37,7 +37,7 @@ services:
     #     start_period: 20s
     #     timeout: 10s
   ui:
-    profiles: ["fe"]
+    profiles: ["fe", "e2e"]
     build:
       context: ./ui
       dockerfile: Dockerfile.local

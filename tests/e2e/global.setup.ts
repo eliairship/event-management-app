@@ -13,7 +13,8 @@ async function globalSetup(config: FullConfig) {
       composeFilePath,
       composeFile
     )
-      .withProfiles('be', 'fe')
+      .withProfiles('e2e')
+      // .withProfiles('be', 'fe')
       .withWaitStrategy('api-1', Wait.forLogMessage(/^Server started on 3001/))
       .up();
   } catch (e) {
