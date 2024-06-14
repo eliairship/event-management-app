@@ -1,7 +1,6 @@
 import { test as setup } from '@playwright/test';
 import { DockerComposeEnvironment, Wait } from 'testcontainers';
 import path from 'path';
-// import { fileURLToPath } from 'url';
 
 setup('create new database', async ({}) => {
   console.log('creating new database...');
