@@ -1,5 +1,5 @@
 -- Password12345
-INSERT INTO public.users (identifier, name, password) VALUES ('eli@test.com', 'eli', '$2y$10$vx4rYJzjWvZWSaDbDjlpLeBm1aFpJOp8jfff0KLm93VmgPCMR3C8q');
+INSERT INTO public.users (identifier, name, password) VALUES ('eli@test.com', 'eli', '$2a$10$VXeNlVNo0K4keoyy6su12.yJae1RPvhytIUDBjq4nMcyN10oP.p/i');
 
 INSERT INTO public.events (user_id, name) VALUES (1, 'Seeded event');
 

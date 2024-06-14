@@ -1,16 +1,26 @@
-import './App.css';
-import { useNavigate } from 'react-router-dom';
-import { Routes } from './containers/Routes';
+import { AppRoutes } from './routes';
+import { Navbar } from './components/Navbar';
+import { AuthContextProvider } from './context/AuthContext';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { Toaster } from './components/ui/toaster';
+
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      retry: 0,
+    },
+  },
+});
 
 function App() {
-  const navigate = useNavigate();
-
   return (
-    <>
-      <button onClick={() => navigate('/nested')}>nested</button>
-      <button onClick={() => navigate('/test')}>Test</button>
-      <Routes />
-    </>
+    <QueryClientProvider client={queryClient}>
+      <AuthContextProvider>
+        <Navbar />
+        <AppRoutes />
+        <Toaster />
+      </AuthContextProvider>
+    </QueryClientProvider>
   );
 }
 

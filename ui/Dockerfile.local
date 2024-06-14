@@ -1,0 +1,11 @@
+FROM node:18
+
+RUN apt-get update
+
+WORKDIR /app
+
+ENTRYPOINT ["sh", "-c"]
+
+# HEALTHCHECK CMD curl --fail http://localhost:5173 || exit 1   
+
+CMD ["npm install && npm run dev"]

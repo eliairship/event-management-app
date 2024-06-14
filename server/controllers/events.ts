@@ -5,7 +5,6 @@ import { EventsService } from '../services';
 
 export async function getAllEventsForUser(req: Request, res: Response) {
   const { user_id } = res.locals;
-
   const events = await EventsService.getAllForUser(user_id);
 
   if (!events) {

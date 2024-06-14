@@ -1,14 +1,15 @@
 name: Deploy Database
 
 on:
-  pull_request:
-    branches:
-      - main
-  push:
-    branches:
-      - main
-    paths:
-      - "database/**"
+  workflow_call:
+  # pull_request:
+  #   branches:
+  #     - main
+  # push:
+  #   branches:
+  #     - main
+  #   paths:
+  #     - "database/**"
 
 jobs:
   migrate:

@@ -10,7 +10,7 @@ const secretKey = process.env.SESSION_KEY ?? 'some-random-key';
 export async function generateAccessToken(userId: number): Promise<string> {
   const payload: JWTPayload = { sub: userId };
   return jwt.sign(payload, secretKey, {
-    expiresIn: 1200,
+    expiresIn: '7d',
   });
 }
 
