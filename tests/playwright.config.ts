@@ -30,17 +30,25 @@ export default defineConfig({
     trace: 'on-first-retry',
   },
 
+  globalSetup: require.resolve('./e2e/global.setup.ts'),
+  globalTeardown: require.resolve('./e2e/global.teardown.ts'),
+
   /* Configure projects for major browsers */
   projects: [
-    {
-      name: 'setup db',
-      testMatch: /global\.setup\.ts/,
-    },
+    // {
+    //   name: 'setup db',
+    //   testMatch: /global\.setup\.ts/,
+    // },
+
+    // {
+    //   name: 'cleanup db',
+    //   testMatch: /global\.teardown\.ts/,
+    // },
 
     {
       name: 'chromium',
       use: { ...devices['Desktop Chrome'] },
-      dependencies: ['setup db'],
+      // dependencies: ['setup db'],
     },
 
     // {
