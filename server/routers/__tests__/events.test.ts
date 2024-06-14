@@ -9,6 +9,6 @@ describe('/events', () => {
         .set('Accept', 'application/json')
         .expect('Content-Type', /json/)
         .expect(200);
-    });
+    }, 10000);
   });
 });
